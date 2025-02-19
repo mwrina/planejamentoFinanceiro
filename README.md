@@ -8,3 +8,5 @@ As funcionalidades específicas do projeto serão:
 - Sistema de login;
 - Cadastro do salário do usuário;
 - Cálculo de valores recomendados para direcionar às áreas da vida do usuário.
+
+- https://trello.com/b/WqL8dYkk/planejamento-financeiro
