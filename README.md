@@ -13,7 +13,9 @@ Requisitos Funcionais do Sistema:
 - RF001 - O sistema deve apresentar um sistema de login;
 - RF002 - O sistema deve permitir o cadastro de usuários e suas respectivas rendas mensais;
 - RF003 - O sistema deve permitir o cadastro manual de despesas do usuário, descontando o valor da quantia disponível da área correspondente ao tipo de despesa;
-- RF004 - O sistema deve permitir o cadastro de entradas monetárias pontuais, recalculando os valores com base nisso;
+- RF004 - O sistema deve permitir a alteração e exclusão das despesas cadastradas manualmente, recalculando o valor disponível com base nisso;
+- RF004 - O sistema deve permitir o cadastro de entradas monetárias pontuais, recalculando os valores disponíveis para cada área com base nisso;
+- RF005 - O sistema deve permitir a alteração ou exclusção das entradas monetária, recalculando os valores disponíveis para cada área com base nisso;
 - RF005 - O sistema deve permitir a alteração dos dados dos usuários;
 - RF006 - O sistema deve permitir a exclusão da conta dos usuários;
 - RF007 - O sistema deve calcular, com base no método 50-30-20, quantos reais o usuário deve reservar para cada área de sua vida.
