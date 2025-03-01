@@ -12,7 +12,7 @@ As funcionalidades específicas do projeto serão:
 Requisitos Funcionais do Sistema:
 - RF001 - O sistema deve apresentar um sistema de login;
 - RF002 - O sistema deve permitir o cadastro de usuários e suas respectivas rendas mensais;
-- RF003 - O sistema deve permitir o cadastro de despesas do usuário, descontando o valor disponível da área correspondente ao tipo de despesa;
+- RF003 - O sistema deve permitir o cadastro manual de despesas do usuário, descontando o valor da quantia disponível da área correspondente ao tipo de despesa;
 - RF003 - O sistema deve permitir a alteração dos dados dos usuários;
 - RF004 - O sistema deve permitir a exclusão da conta dos usuários;
 - RF005 - O sistema deve calcular, com base no método 50-30-20, quantos reais o usuário deve reservar para cada área de sua vida.
