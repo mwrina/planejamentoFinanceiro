@@ -26,6 +26,6 @@ Requisitos Não Funcionais do Sistema:
 - RNF003 - O sistema deve ser intuitivo, com funcionalidades bem identificadas e de simples utilização;
 - RNF004 - O sistema deve ser desenvolvido utilizando HTML, CSS e JavaScript (Angular e Node.JS);
 - RNF005 - O sistema deve utilizar um banco de dados MySQL.
-
-
 - https://trello.com/b/WqL8dYkk/planejamento-financeiro
+
+Tipo de arquitetura escolhida: Monolítica.
