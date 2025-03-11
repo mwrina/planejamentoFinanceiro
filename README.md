@@ -4,8 +4,10 @@ O objetivo do projeto é desenvolver um sistema de planejamento financeiro para 
 
 As funcionalidades específicas do projeto serão:
 - Sistema de login;
-- Cadastro do salário do usuário;
-- Cálculo de valores recomendados para direcionar às áreas da vida do usuário.
+- Cadastro, edição e exclusão de entradas monetárias do usuário;
+- Cadastro, edição e exclusão de saídas monetárias do usuário;
+- Cadastro, alteração de dados e exclusão de usuários;
+- Dashboards para controle de gastos.
 
 Requisitos Funcionais do Sistema:
 - RF001 - O sistema deve apresentar um sistema de login;
@@ -28,6 +30,10 @@ Requisitos Não Funcionais do Sistema:
 - RNF005 - O sistema deve utilizar um banco de dados MySQL.
 
 Tipo de arquitetura escolhida: Monolítica.
+
+**Estratégias de Desenvolvimento:
+- Versionamento de Código (Git/GitHub);
+- Realização de Testes Unitários.
 
 Planejamento de Atividades:
 https://trello.com/b/WqL8dYkk/planejamento-financeiro
