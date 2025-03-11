@@ -29,7 +29,7 @@ Requisitos Não Funcionais do Sistema:
 - RNF004 - O sistema deve ser desenvolvido utilizando HTML, CSS e JavaScript (Angular e Node.JS);
 - RNF005 - O sistema deve utilizar um banco de dados MySQL.
 
-Tipo de arquitetura escolhida: Monolítica.
+Tipo de arquitetura escolhida: MVC (Model, View, Controller).
 
 **Estratégias de Desenvolvimento:
 - Versionamento de Código (Git/GitHub);
