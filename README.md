@@ -24,7 +24,7 @@ Requisitos Funcionais do Sistema:
 
 Requisitos Não Funcionais do Sistema:
 - RNF001 - O sistema deve ser seguro, visto que serão armazenados dados sensíveis dos usuários;
-- RNF002 - O sistema deve ser estável e otimizado, calculando e exibindo os valores rapidamente;
+- RNF002 - O sistema deve ser estável e otimizado, calculando e exibindo os valores rapidamente (menos de 5 segundos);
 - RNF003 - O sistema deve ser intuitivo, com funcionalidades bem identificadas e de simples utilização;
 - RNF004 - O sistema deve ser desenvolvido utilizando HTML, CSS e JavaScript (Angular e Node.JS);
 - RNF005 - O sistema deve utilizar um banco de dados MySQL.
