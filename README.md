@@ -40,3 +40,6 @@ https://trello.com/b/WqL8dYkk/planejamento-financeiro
 
 Protótipo do Projeto (Figma):
 https://www.figma.com/design/3CEi2rCM5H9IQWNL9xnNHJ/Sistema-Financeiro?node-id=0-1&t=rWoHS2eJOczjxFfi-1
+
+Documentação do Sistema: 
+https://docs.google.com/document/d/1FN9DBMZh-oYXIdtMSwnVvR5p6vs5aD0DTaissV6gecE/edit?tab=t.0
