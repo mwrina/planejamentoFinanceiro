@@ -9,26 +9,6 @@ As funcionalidades específicas do projeto serão:
 - Cadastro, alteração de dados e exclusão de usuários;
 - Dashboards para controle de gastos.
 
-Requisitos Funcionais do Sistema:
-- RF001 - O sistema deve apresentar um sistema de login;
-- RF002 - O sistema deve permitir o cadastro de usuários e suas respectivas rendas mensais;
-- RF003 - O sistema deve permitir o cadastro manual de despesas do usuário, descontando o valor da quantia disponível para o mês;
-- RF004 - As categorias de despesas devem ser: contas, alimentação, transporte, saúde, lazer;
-- RF004 - O sistema deve permitir a alteração e exclusão das despesas cadastradas manualmente, recalculando o valor disponível com base nisso;
-- RF005 - O sistema deve permitir o cadastro de entradas monetárias pontuais, recalculando os valores disponíveis para cada área com base nisso;
-- RF006 - O sistema deve permitir a alteração ou exclusão das entradas monetária, recalculando os valores disponíveis para cada área com base nisso;
-- RF007 - O sistema deve realizar o cálculo e armazenamento do valor "guardado" mensalmente pelo usuário;
-- RF008 - O sistema deve permitir a alteração dos dados dos usuários;
-- RF009 - O sistema deve permitir a exclusão da conta dos usuários;
-- RF010 - O sistema deve calcular quantos reais o usuário deve gastar ou guardar no mês.
-
-Requisitos Não Funcionais do Sistema:
-- RNF001 - O sistema deve ser seguro, visto que serão armazenados dados sensíveis dos usuários;
-- RNF002 - O sistema deve ser estável e otimizado, calculando e exibindo os valores rapidamente (menos de 5 segundos);
-- RNF003 - O sistema deve ser intuitivo, com funcionalidades bem identificadas e de simples utilização;
-- RNF004 - O sistema deve ser desenvolvido utilizando HTML, CSS e JavaScript (Angular e Node.JS);
-- RNF005 - O sistema deve utilizar um banco de dados MySQL.
-
 Tipo de arquitetura escolhida: MVC (Model, View, Controller).
 
 **Estratégias de Desenvolvimento:
