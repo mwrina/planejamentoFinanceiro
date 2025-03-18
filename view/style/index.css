@@ -1,0 +1,168 @@
+/* GERAL */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF;
+}
+
+/* ============================================= */
+/* NAVBAR */
+
+.navbar {
+    background-color: #486F48;
+    width: 98%;
+    margin: 0;
+    padding: 0.5% 1% 0.5% 1%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navs {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.navs a:link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navs a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navs a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navs a:active {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+/* ============================================= */
+/* MAIN */
+
+main {
+    width: 98%;
+    margin: 2% 1% 1% 1%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TOPO */
+
+.topo {
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ESQUERDA */
+
+.esq {
+    border-radius: 25px;
+    width: 40%;
+    padding: 0 2% 1% 2%;
+    background-color: rgb(140, 196, 140, 16%);
+    height: fit-content;
+}
+
+#tit {
+    font-weight: 600;
+    color: #486F48
+}
+
+#graficoBarras {
+    width: 98%;
+}
+
+/* DIREITA */
+
+.dir {
+    border-radius: 25px;
+    width: 45%;
+    padding: 0 2% 1% 2%;
+    background-color: rgb(140, 196, 140, 16%);
+    display: flex;
+    flex-direction: column;
+}
+
+.dashValores {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lin {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dash {
+    width: 40%;
+    height: 75%;
+    border-radius: 40px;
+    padding: 5%;
+}
+
+#entradas {
+    padding: 2%;
+    border: 3px solid #486F48;
+    background-color: #B3D6B3;
+}
+
+#saidas {
+    padding: 2%;
+    border: 3px solid #7A0000;
+    background-color: #CF9A9A;
+}
+
+#investimentos {
+    padding: 2%;
+    border: 3px solid #DB8834;
+    background-color: #F1CDA9;
+}
+
+#cofrinho {
+    padding: 2%;
+    border: 3px solid #EBB400;
+    background-color: #F0E2B4;
+}
+
+#dashIcon {
+    width: 25%;
+}
+
+.dashTxt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    line-height: 0.5;
+}
+
+.valores {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+#saldoDisponivel {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
