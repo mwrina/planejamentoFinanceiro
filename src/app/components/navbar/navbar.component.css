@@ -1,0 +1,57 @@
+/* GERAL */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #FFFFFF;
+}
+
+/* ============================================= */
+/* NAVBAR */
+
+.navbar {
+  background-color: #486F48;
+  width: 98%;
+  margin: 0;
+  padding: 0.5% 1% 0.5% 1%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navs {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.navs a:link {
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navs a:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navs a:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navs a:active {
+  color: #FFFFFF;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#usu {
+  cursor: pointer;
+}
