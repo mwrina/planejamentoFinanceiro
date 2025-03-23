@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
+
 export class IndexComponent {
   acompanhamentos = [
     { valor: 'R$ 200,00', area: 'Lazer' },
