@@ -1,5 +1,9 @@
 # planejamentoFinanceiro
 
+Centro Universitário Católica de Santa Catarina
+Programação WEB
+Acadêmicos: Marina Rosa Oliveira e Matheus Jogam Forbici
+
 O objetivo do projeto é desenvolver um sistema de planejamento financeiro para ajudar o usuário a controlar e acompanhar seus gastos.
 
 As funcionalidades específicas do projeto serão:
