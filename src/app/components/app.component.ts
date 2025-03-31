@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
+import { PopupCriarEntradaComponent } from './popup-criar-entrada/popup-criar-entrada.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { IndexComponent } from './index/index.component';
   imports: [
     NavbarComponent,
     IndexComponent,
-    RouterModule
+    RouterModule,
+    PopupCriarEntradaComponent
   ]
 })
 export class AppComponent { }
