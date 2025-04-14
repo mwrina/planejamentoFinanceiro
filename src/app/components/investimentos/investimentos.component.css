@@ -1,0 +1,96 @@
+/* ============================================= */
+/* MAIN */
+
+main {
+  width: 96%;
+  height: 100%;
+  margin: 2% 2% 2% 2%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============================================= */
+/* TOPO */
+
+.titBtns {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btnsDiv {
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btns {
+  width: 20%;
+  padding: 0;
+  background-color: #FFFFFF;
+  border: none;
+}
+
+#btn {
+  width: 100%;
+}
+
+/* ============================================= */
+/* LISTA */
+
+.lista {
+  width: 94%;
+  height: 100%;
+  min-height: 500px;
+  border: 3px solid #486F48;
+  border-radius: 25px;
+  padding: 3%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.linTit {
+  width: 98%;
+  padding: 0 1% 0 1%;
+  margin-bottom: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.linLista {
+  width: 98%;
+  padding: 0 1% 0 1%;
+  margin-bottom: 1%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(140,198,140,0.16);
+}
+
+/* TITULO LISTA */
+
+.txtDiv {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.acoesDiv {
+  width: 7%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.txtLista {
+  font-size: 16px;
+  width: 20%;
+}
