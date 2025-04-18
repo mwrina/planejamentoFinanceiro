@@ -29,3 +29,12 @@ https://www.figma.com/design/3CEi2rCM5H9IQWNL9xnNHJ/Sistema-Financeiro?node-id=0
 
 Documentação do Sistema: 
 https://docs.google.com/document/d/1FN9DBMZh-oYXIdtMSwnVvR5p6vs5aD0DTaissV6gecE/edit?tab=t.0
+
+Para executar o projeto, é necessário:
+- Baixar o angular: npm install -g @angular/cli;
+- Criar o projeto: ng new my-app;
+- Adicionar as pastas do repositório no projeto;
+- Executar o comando: npm init -y;
+- Baixar o Sequelize: npm install -g sequelize-cli;
+- Baixar o Mysql2: npm install mysql2;
+- Para executá-lo: ng serve.
