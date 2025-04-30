@@ -35,6 +35,8 @@ Para executar o projeto, é necessário:
 - Criar o projeto: ng new my-app;
 - Adicionar as pastas do repositório no projeto;
 - Executar o comando: npm init -y;
+- Executar os seguintes comandos, em ordem:
+- Alterar local de instalação: cd backend
 - Baixar o Sequelize: npm install -g sequelize-cli;
 - Baixar o Mysql2: npm install mysql2;
 - Baixar o bcrypt: npm install bcryptjs;
