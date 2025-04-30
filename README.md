@@ -37,4 +37,5 @@ Para executar o projeto, é necessário:
 - Executar o comando: npm init -y;
 - Baixar o Sequelize: npm install -g sequelize-cli;
 - Baixar o Mysql2: npm install mysql2;
+- Baixar o bcrypt: npm install bcryptjs;
 - Para executá-lo: ng serve.
