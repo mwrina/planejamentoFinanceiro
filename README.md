@@ -34,10 +34,12 @@ Para executar o projeto, é necessário:
 - Baixar o angular: npm install -g @angular/cli;
 - Criar o projeto: ng new my-app;
 - Adicionar as pastas do repositório no projeto;
-- Executar o comando: npm init -y;
 - Executar os seguintes comandos, em ordem:
 - Alterar local de instalação: cd backend
+- Executar o comando: npm init -y;
+- Adicionar: "type": "module" ao package.json;
 - Baixar o Sequelize: npm install -g sequelize-cli;
+- Baixar o CORS: npm install cors;
 - Baixar o Mysql2: npm install mysql2;
 - Baixar o bcrypt: npm install bcryptjs;
 - Para executá-lo: ng serve.
