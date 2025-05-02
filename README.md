@@ -39,7 +39,5 @@ Para executar o projeto, é necessário:
 - Executar o comando: npm init -y;
 - Adicionar: "type": "module" ao package.json;
 - Baixar o Sequelize: npm install -g sequelize-cli;
-- Baixar o CORS: npm install cors;
-- Baixar o Mysql2: npm install mysql2;
-- Baixar o bcrypt: npm install bcryptjs;
+- npm install express mysql2 bcryptjs cors;
 - Para executá-lo: ng serve.
