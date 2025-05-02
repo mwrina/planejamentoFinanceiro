@@ -1,0 +1,19 @@
+{
+  "name": "planejamentofinanceiro-main",
+  "version": "1.0.0",
+  "description": "Centro Universitário Católica de Santa Catarina",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "planejamentofinanceiro-main": "file:",
+    "sequelize": "^6.37.7"
+  }
+}

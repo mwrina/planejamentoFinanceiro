@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<main>
+
+  <div class="titBtns">
+      <p>Minhas entradas</p>
+
+      <div class="btnsDiv">
+        <button id="excelBtn" class="btns"> <img src="assets/imgs/botaoExcel.png" id="btn"> </button>
+        <button id="filtroBtn" class="btns"> <img src="assets/imgs/botaoFiltro.png" id="btn"> </button>
+        <button id="addBtn" class="btns" (click)="showPopup()"> <img src="assets/imgs/botaoAdd.png" id="btn"> </button>
+        <app-popup-criar-entrada *ngIf="isPopupVisible" (close)="hidePopup()"></app-popup-criar-entrada>
+      </div>
+  </div>
+
+  <div class="lista">
+
+    <div class="linTit">
+      <div class="txtDiv">
+        <p class="txtLista">Entrada</p>
+        <p class="txtLista">Tipo de Entrada</p>
+        <p class="txtLista">Data</p>
+        <p class="txtLista">Valor</p>
+      </div>
+
+      <div class="acoesDiv">
+        <p class="titLista">Ações</p>
+      </div>
+    </div>
+
+    <div class="linLista">
+      <div class="txtDiv">
+        <p class="txtLista">Salário</p>
+        <p class="txtLista">Recorrente</p>
+        <p class="txtLista">03-2025</p>
+        <p class="txtLista">R$XXXX.XX</p>
+      </div>
+
+      <div class="acoesDiv">
+        <button id="editarBtn" class="btns"> <img src="assets/imgs/botaoEditar.png"> </button>
+        <button id="excluirBtn" class="btns"> <img src="assets/imgs/botaoExcluir.png"> </button>
+      </div>
+
+    </div>
+
+    <div class="linLista">
+      <div class="txtDiv">
+        <p class="txtLista">Freelance</p>
+        <p class="txtLista">Pontual</p>
+        <p class="txtLista">03-2025</p>
+        <p class="txtLista">R$XXX.XX</p>
+      </div>
+
+      <div class="acoesDiv">
+        <button id="editarBtn" class="btns"> <img src="assets/imgs/botaoEditar.png"> </button>
+        <button id="excluirBtn" class="btns"> <img src="assets/imgs/botaoExcluir.png"> </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>

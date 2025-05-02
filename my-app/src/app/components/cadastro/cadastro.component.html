@@ -1,0 +1,27 @@
+<main>
+  <div class="esq">
+
+    <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+
+      <label for="nome" class="formLabel">Nome</label>
+      <input id="nome" class="formInput" type="text" placeholder="Nome" formControlName="nome">
+
+      <label for="email" class="formLabel">E-mail</label>
+      <input id="email" class="formInput" type="email" placeholder="E-mail" formControlName="email">
+
+      <label for="senha" class="formLabel">Senha</label>
+      <input id="senha" class="formInput" type="password" placeholder="Senha" formControlName="senha">
+
+      <label for="confSenha" class="formLabel">Confirmar senha</label>
+      <input id="confSenha" class="formInput" type="password" placeholder="Confirmar senha" formControlName="confSenha">
+
+      <button type="submit" class="submitBtn">Criar conta</button>
+      <a href="/login" class="textoSecundario" id="registrar">Voltar</a>
+    </form>
+  </div>
+
+  <div class="dir">
+    <img src="assets/imgs/logo.svg" alt="Logo Monet" class="logo" />
+  </div>
+</main>
+
