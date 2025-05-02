@@ -1,0 +1,27 @@
+<main>
+    <div class="esq">
+
+      <img src="assets/imgs/userLogin.svg" id="userIcon">
+
+      <form (ngSubmit)="login()">
+
+        <label for="email" class="formLabel">E-mail</label>
+        <input id="email" name="email" class="formInput" type="email" required placeholder="E-mail" [(ngModel)]="email">
+
+        <label for="senha" class="formLabel">Senha</label>
+        <input id="senha" name="senha" class="formInput" type="password" required placeholder="Senha" [(ngModel)]="senha">
+
+        <a href="/esqueci-minha-senha" class="textoSecundario" id="esqueci">Esqueci minha senha</a>
+
+        <button class="submitBtn" type="submit">Entrar</button>
+        <a href="/cadastro" class="textoSecundario" id="registrar">Registrar-se</a>
+      </form>
+
+      <p *ngIf="mensagem">{{ mensagem }}</p>
+    </div>
+
+    <div class="dir">
+      <img src="assets/imgs/logo.svg" alt="Logo Monet" class="logo" />
+    </div>
+  </main>
+

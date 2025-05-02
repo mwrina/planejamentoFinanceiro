@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto';
+  background-color: #FFFFFF;
+}
+
+/* ============================================= */
+/* NAVBAR */
+
+.navbar {
+  background-color: #486F48;
+  width: 98%;
+  margin: 0;
+  padding: 0.5% 1% 0.5% 1%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navs {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.navs a:link {
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navs a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.navs a:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navs a:active {
+  color: #FFFFFF;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#usuarioBtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* ============================================= */
+/* DROPDOWN */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #486F48;
+  border-radius: 0 0 15px 15px;
+  min-width: 200px;
+  /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+#sair {
+  color: #7A0000;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
