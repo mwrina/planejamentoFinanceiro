@@ -7,15 +7,13 @@ const Usuario = {
   },
 
   buscarPorEmail: (email, callback) => {
-    const sql = 'SELECT id FROM usuarios WHERE email = ? LIMIT 1';
-    id = db.query(sql, [email], (err, results) => {
-      if (err || results.length === 0) {
-        return callback(err || null, null);
-      }
+    const sql = 'SELECT * FROM usuarios WHERE email = ?';
+    db.query(sql, [email], (err, results) => {
+      if (err) return callback(err);
+      if (results.length === 0) return callback(null, null);
       callback(null, results[0]);
     });
   }
-
 };
 
 export default Usuario;

@@ -5,9 +5,12 @@
 /tmp
 /out-tsc
 /bazel-out
+build/
+
+# Ignorar node_modules das pastas my-app e backend
+**/node_modules/
 
 # Node
-/node_modules
 npm-debug.log
 yarn-error.log
 

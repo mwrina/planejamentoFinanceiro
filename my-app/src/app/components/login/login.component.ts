@@ -21,21 +21,38 @@ export class LoginComponent {
 
   login() {
     console.log('Login clicado!');
-    //Envia requisição com os parâmetros email e senha
-    this.http.post<any>('http://localhost:3000/login', {
+
+    const dadosLogin = {
       email: this.email,
       senha: this.senha
-    }).subscribe({
-      next: (res) => {
-        this.mensagem = res.mensagem;
-        console.log('Usuário logado:', res.usuario);
+    };
 
-        // Redirecionar para /inicio
-        this.router.navigate(['/inicio']);
+      this.http.post<any>('http://localhost:3000/api/usuarios/login', dadosLogin).subscribe({
+      next: (res) => {
+        console.log('Resposta da API:', res); // Verifique a resposta
+
+        if (res && res.usuario && res.usuario.id) {
+          this.mensagem = res.mensagem;
+
+          // Salve o token (se existir) e o ID do usuário
+          localStorage.setItem('token', res.token); // Salva o token
+          localStorage.setItem('usuarioId', res.usuario.id); // Salva o ID do usuário
+
+          // Debugging: Verifique se os dados foram salvos corretamente
+          console.log('Token salvo:', localStorage.getItem('token'));
+          console.log('ID do usuário salvo:', localStorage.getItem('usuarioId'));
+
+          this.router.navigate(['/inicio']); // Redireciona após login
+        } else {
+          console.error('Erro: Resposta da API não contém os dados esperados');
+          this.mensagem = 'Dados do login inválidos ou resposta da API mal formatada.';
+        }
       },
       error: (err) => {
+        console.error('Erro na requisição:', err);
         this.mensagem = err.error?.mensagem || 'Erro ao fazer login.';
       }
     });
+
   }
 }

@@ -1,37 +1,36 @@
 import { Routes } from '@angular/router';
-import { IndexComponent } from './components/index/index.component';
-import { EntradasComponent } from './components/entradas/entradas.component';
-import { SaidasComponent } from './components/saidas/saidas.component';
-import { LoginComponent } from './components/login/login.component';
-import { CadastroComponent } from './components/cadastro/cadastro.component';
-import { EsqueciMinhaSenhaComponent } from './components/esqueci-minha-senha/esqueci-minha-senha.component';
-import { InvestimentosComponent } from './components/investimentos/investimentos.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./components/index/index.component').then(m => m.IndexComponent)
+      import('./components/index/index.component').then(m => m.IndexComponent),
+    canActivate: [AuthGuard]
   },
   {
     path: 'inicio',
     loadComponent: () =>
-      import('./components/index/index.component').then(m => m.IndexComponent)
+      import('./components/index/index.component').then(m => m.IndexComponent),
+    canActivate: [AuthGuard]
   },
   {
     path: 'entradas',
     loadComponent: () =>
-      import('./components/entradas/entradas.component').then(m => m.EntradasComponent)
+      import('./components/entradas/entradas.component').then(m => m.EntradasComponent),
+    canActivate: [AuthGuard]
   },
   {
     path: 'saidas',
     loadComponent: () =>
-      import('./components/saidas/saidas.component').then(m => m.SaidasComponent)
+      import('./components/saidas/saidas.component').then(m => m.SaidasComponent),
+    canActivate: [AuthGuard]
   },
   {
     path: 'investimentos',
     loadComponent: () =>
-      import('./components/investimentos/investimentos.component').then(m => m.InvestimentosComponent)
+      import('./components/investimentos/investimentos.component').then(m => m.InvestimentosComponent),
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

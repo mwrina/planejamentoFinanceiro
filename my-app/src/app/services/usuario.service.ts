@@ -19,6 +19,4 @@ export class UsuarioService {
   criarUsuario(usuario: any): Observable<any> {
     return this.http.post(this.apiUrl, usuario);
   }
-
-  // Outros métodos conforme necessário, como deletar, editar, etc.
 }

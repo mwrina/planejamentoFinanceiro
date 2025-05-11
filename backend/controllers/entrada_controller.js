@@ -1,68 +1,54 @@
-import bcrypt from 'bcryptjs';
-import Usuario from '../models/entradas_model';
+import Entrada from '../models/entradas_model.js';
 
-export const getEntradas = async (req, res) => {
-  const idUsu = req.idUsu;
+export const criarEntrada = (req, res) => {
+  const usuarioId = localStorage.getItem('usuarioId'); // Recupera o ID do usuário do localStorage
 
-  try {
-    // Verifica se o usuário com o id existe
-    const usuario = await Usuario.findByPk(idUsu);
+  if (usuarioId) {
+    const novaEntrada = {
+      entrada: this.novaEntrada,
+      tipo: this.tipoEntrada,
+      data: this.dataEntrada,
+      valor: this.valorEntrada,
+      usuarioId: usuarioId // Envia o ID do usuário
+    };
 
-    if (!usuario) {
-      return res.status(404).json({ message: 'Usuário não encontrado.' });
-    }
-
-    // Lista as entradas do usuário
-    const entradas = await Entrada.findAll({
-      where: { usuario: idUsu }
+    this.entradaService.criarEntrada(novaEntrada).subscribe({
+      next: () => {
+        alert('Entrada criada com sucesso');
+        this.carregarEntradas(); // Atualiza a lista
+      },
+      error: (err) => {
+        alert('Erro ao criar entrada');
+      }
     });
-
-    res.status(200).json(veiculos);
-  } catch (err) {
-    console.error('Erro ao buscar entradas do usuário:', err);
-    res.status(500).json({ message: 'Erro ao buscar entradas do usuário' });
+  } else {
+    alert('Erro: ID do usuário não encontrado.');
   }
 };
 
-export const createEntrada = async (req, res) => {
-  try {
-    const { entrada, tipo, data, valor } = req.body;
-
-    // Supondo que o middleware de autenticação já adicionou o usuário logado ao req.user
-    const usuario = req.user?.id;
-
-    if (!usuario) {
-      return res.status(401).json({ message: 'Usuário não autenticado.' });
-    }
-
-    await Entrada.create({
-      usuario,
-      entrada,
-      tipo,
-      data,
-      valor
-    });
-
-    res.json({ message: "Um novo registro foi inserido na tabela entradas" });
-  } catch (e) {
-    console.error("Erro ao inserir uma nova entrada", e);
-    res.status(500).json({ message: 'Erro ao criar entrada.' });
-  }
+export const listarEntradas = (req, res) => {
+  const usuario = req.params.usuario;
+  Entrada.listarEntradas(usuario, (err, results) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao listar entradas.' });
+    res.status(200).json(results);
+  });
 };
 
-export const deleteEntrada = async (req, res) => {
-    try {
+export const atualizarEntrada = (req, res) => {
+  const { id } = req.params;
+  const { entrada, tipo, data, valor } = req.body;
 
-        await Entrada.destroy ({
-          where: {
-            id: req.params.id
-          }
-        })
-        res.json({
-            "message": "Entrada excluída"
-        })
-    } catch (e) {
-        console.log("Erro ao excluir registro", e)
-    }
+  Entrada.atualizar(id, entrada, tipo, data, valor, (err, result) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao atualizar entrada.' });
+    res.status(200).json({ mensagem: 'Entrada atualizada com sucesso!' });
+  });
+};
 
-}
+export const deletarEntrada = (req, res) => {
+  const { id } = req.params;
+
+  Entrada.deletar(id, (err) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao deletar entrada.' });
+    res.status(200).json({ mensagem: 'Entrada deletada com sucesso!' });
+  });
+};

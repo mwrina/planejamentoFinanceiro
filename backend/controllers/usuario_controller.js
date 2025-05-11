@@ -1,5 +1,9 @@
 import Usuario from '../models/usuario_model.js';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = 'secretpassword';
+
 
 export const criarUsuario = (req, res) => {
   const { nome, email, senha } = req.body;
@@ -35,7 +39,12 @@ export const loginUsuario = (req, res) => {
       return res.status(401).json({ mensagem: 'Email ou senha inválidos.' });
     }
 
-    // Login bem-sucedido (você pode gerar token aqui se quiser)
+    const token = jwt.sign(
+      { id: usuario.id, email: usuario.email }, // payload
+      JWT_SECRET,
+      { expiresIn: '2h' }
+    );
+
     res.status(200).json({
       mensagem: 'Login realizado com sucesso!',
       usuario: {

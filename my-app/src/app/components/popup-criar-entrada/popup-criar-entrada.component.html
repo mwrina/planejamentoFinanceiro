@@ -1,20 +1,19 @@
 <div class="popup-overlay">
-
   <div class="popup-content">
 
     <div class="divFechar">
       <button id="botaoFechar" (click)="closePopup()"><img src="assets/imgs/fecharIcon.svg"></button>
     </div>
 
-    <form class="campos">
+    <form class="campos" [formGroup]="form" (ngSubmit)="salvarEntrada()">
       <div class="lin">
         <p id="tit">Entrada</p>
-        <input type="text" id="nome" class="formInput">
+        <input type="text" id="nome" class="formInput" formControlName="entrada">
       </div>
 
       <div class="lin">
         <p id="tit">Tipo de Entrada</p>
-        <select id="tipo" class="formSelect">
+        <select id="tipo" class="formSelect" formControlName="tipo">
           <option>Recorrente</option>
           <option>Pontual</option>
         </select>
@@ -22,19 +21,18 @@
 
       <div class="lin">
         <p id="tit">Data</p>
-        <input type="date" id="data" class="formInput">
+        <input type="date" id="data" class="formInput" formControlName="data">
       </div>
 
       <div class="lin">
         <p id="tit">Valor</p>
-        <input type="number" id="valor" class="formInput">
+        <input type="number" id="valor" class="formInput" formControlName="valor">
       </div>
 
       <div class="submitDiv">
-        <button type="submit" class="submitBtn">Adicionar</button>
+        <button type="submit" class="submitBtn" [disabled]="form.invalid">Adicionar</button>
       </div>
     </form>
 
   </div>
-
 </div>
