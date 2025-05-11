@@ -34,13 +34,14 @@ export class LoginComponent {
         if (res && res.usuario && res.usuario.id) {
           this.mensagem = res.mensagem;
 
-          // Salve o token (se existir) e o ID do usuário
-          localStorage.setItem('token', res.token); // Salva o token
-          localStorage.setItem('usuarioId', res.usuario.id); // Salva o ID do usuário
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('usuarioId', res.usuario.id.toString());
 
-          // Debugging: Verifique se os dados foram salvos corretamente
-          console.log('Token salvo:', localStorage.getItem('token'));
-          console.log('ID do usuário salvo:', localStorage.getItem('usuarioId'));
+            // Debugging: Verifique se os dados foram salvos corretamente
+            console.log('Token salvo:', localStorage.getItem('token'));
+            console.log('ID do usuário salvo:', localStorage.getItem('usuarioId'));
+          }
 
           this.router.navigate(['/inicio']); // Redireciona após login
         } else {

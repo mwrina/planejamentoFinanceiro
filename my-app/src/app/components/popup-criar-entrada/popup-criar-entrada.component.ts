@@ -14,7 +14,7 @@ import { EntradaService } from '../../services/entradas.service';
 })
 
 export class PopupCriarEntradaComponent {
- @Output() close = new EventEmitter<void>();
+  @Output() close = new EventEmitter<void>();
   @Output() entradaCriada = new EventEmitter<void>(); // <-- Emite evento para o componente pai
 
   private fb = inject(FormBuilder);
@@ -34,7 +34,7 @@ export class PopupCriarEntradaComponent {
   salvarEntrada() {
     if (this.form.invalid) return;
 
-    const usuario = 1; // <- Pegue do token, localStorage ou serviço de autenticação
+    const usuario = Number(localStorage.getItem('usuarioId'));
 
     const novaEntrada = {
       usuario,
