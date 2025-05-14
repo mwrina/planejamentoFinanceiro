@@ -12,6 +12,7 @@
         <app-popup-criar-entrada
           *ngIf="isPopupVisible"
           (close)="hidePopup()"
+          [entradaParaEditar]="entradaParaEditar"
           (entradaCriada)="onEntradaCriada()"
         ></app-popup-criar-entrada>
 
@@ -42,7 +43,9 @@
       </div>
 
       <div class="acoesDiv">
-        <button id="editarBtn" class="btns"> <img src="assets/imgs/botaoEditar.png"> </button>
+        <button id="editarBtn" class="btns" (click)="editarEntrada(entrada)">
+          <img src="assets/imgs/botaoEditar.png">
+        </button>
         <button id="excluirBtn" class="btns" (click)="excluirEntrada(entrada.id)">
           <img src="assets/imgs/botaoExcluir.png">
         </button>

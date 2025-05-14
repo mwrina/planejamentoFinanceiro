@@ -75,6 +75,7 @@
 }
 
 .submitBtn {
+  color: #000000;
   border: 3px solid #486F48;
   background-color: rgba(36, 120, 36, 0.24);
   border-radius: 20px;

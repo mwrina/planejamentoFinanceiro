@@ -17,6 +17,7 @@ import { EntradaService } from '../../services/entradas.service';
 })
 export class EntradasComponent implements OnInit {
   isPopupVisible = false;
+  entradaParaEditar: any = null;
   entradas: any[] = [];
   usuarioId: string = '';
 
@@ -29,14 +30,21 @@ export class EntradasComponent implements OnInit {
     }
   }
 
-  // Método para mostrar o popup de criação de entrada
+  // Mostra popup de criação de entrada
   showPopup() {
+    this.entradaParaEditar = null; // Garante que está criando, não editando
     this.isPopupVisible = true;
   }
 
-  // Método para esconder o popup
+  // Mostra popup para editar entrada
+  editarEntrada(entrada: any) {
+    this.entradaParaEditar = entrada; // Passa os dados da entrada para o popup
+    this.isPopupVisible = true;
+  }
+
   hidePopup() {
     this.isPopupVisible = false;
+    this.entradaParaEditar = null; // Reseta variáveis
   }
 
   // Método para carregar as entradas do usuário

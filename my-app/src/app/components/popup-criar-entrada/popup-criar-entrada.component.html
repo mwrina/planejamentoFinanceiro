@@ -30,7 +30,9 @@
       </div>
 
       <div class="submitDiv">
-        <button type="submit" class="submitBtn" [disabled]="form.invalid">Adicionar</button>
+        <button type="submit" class="submitBtn" [disabled]="form.invalid">
+          {{ entradaParaEditar ? 'Salvar Alterações' : 'Criar Entrada' }}
+        </button>
       </div>
     </form>
 
