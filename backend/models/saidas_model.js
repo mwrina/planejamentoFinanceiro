@@ -1,37 +1,28 @@
-import { Sequelize } from "sequelize";
-import db from "../config/database.js";
-import Usuario from "./usuario_model.js";
+import db from '../config/db.js';
 
-const Saida = db.define('saidas', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-    },
-    usuario: {
-      type:Sequelize.INTEGER,
-      references: {
-        model: Usuario,
-        key: 'id'
-      }
-    },
-    saida: {
-      type:Sequelize.STRING(50)
-    },
-    tipo: {
-      type:Sequelize.STRING(30)
-    },
-    data: {
-      type:Sequelize.DATE
-    },
-    valor: {
-      type:Sequelize.FLOAT
-    },
-},
-{
-    timestamps: false,
-    freezeTableName: true
-})
+const Saida = {
+  criar: (usuario, saida, tipo, data, valor, callback) => {
+    const sql = 'INSERT INTO saidas (usuario, saida, tipo, data, valor) VALUES (?, ?, ?, ?, ?)';
+    db.query(sql, [usuario, saida, tipo, data, valor], callback);
+  },
 
-Saida.belongsTo(Usuario, {foreignKey:'usuarios', as: 'usuarioAssociation', allowNull:false})
+  listarSaidas : (usuario, callback) => {
+    const sql = 'SELECT * FROM saidas WHERE usuario = ?';
+    db.query(sql, [usuario], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+    });
+  },
+  
+  atualizar : (id, saida, tipo, data, valor, callback) => {
+    const sql = 'UPDATE saidas SET saida = ?, tipo = ?, data = ?, valor = ? WHERE id = ?';
+    db.query(sql, [saida, tipo, data, valor, id], callback);
+  },
 
-export default Saida
+  deletar : (id, callback) => {
+    const sql = 'DELETE FROM saidas WHERE id = ?';
+    db.query(sql, [id], callback);
+  },
+};
+
+export default Saida;

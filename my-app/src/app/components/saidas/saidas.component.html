@@ -3,13 +3,18 @@
 <main>
 
   <div class="titBtns">
-      <p>Minhas entradas</p>
+      <p>Minhas saídas</p>
 
       <div class="btnsDiv">
         <button id="excelBtn" class="btns"> <img src="assets/imgs/botaoExcel.png" id="btn"> </button>
         <button id="filtroBtn" class="btns"> <img src="assets/imgs/botaoFiltro.png" id="btn"> </button>
         <button id="addBtn" class="btns" (click)="showPopup()"> <img src="assets/imgs/botaoAdd.png" id="btn"> </button>
-        <app-popup-criar-saida *ngIf="isPopupVisible" (close)="hidePopup()"></app-popup-criar-saida>
+        <app-popup-criar-saida
+        *ngIf="isPopupVisible"
+          (close)="hidePopup()"
+          [saidaParaEditar]="saidaParaEditar"
+          (entradaCriada)="onSaidaCriada()"
+          ></app-popup-criar-saida>
       </div>
   </div>
 
@@ -28,34 +33,22 @@
       </div>
     </div>
 
-    <div class="linLista">
+   <div class="linLista" *ngFor="let saida of saidas">
       <div class="txtDiv">
-        <p class="txtLista">Aluguel</p>
-        <p class="txtLista">Contas</p>
-        <p class="txtLista">03-2025</p>
-        <p class="txtLista">R$XXXX.XX</p>
+        <p class="txtLista">{{ saida.saida }}</p>
+        <p class="txtLista">{{ saida.tipo }}</p>
+        <p class="txtLista">{{ saida.data | date: 'MM-yyyy' }}</p>
+        <p class="txtLista">R$ {{ saida.valor | number:'1.2-2' }}</p>
       </div>
 
       <div class="acoesDiv">
-        <button id="editarBtn" class="btns"> <img src="assets/imgs/botaoEditar.png"> </button>
-        <button id="excluirBtn" class="btns"> <img src="assets/imgs/botaoExcluir.png"> </button>
+        <button id="editarBtn" class="btns" (click)="editarSaida(saida)">
+          <img src="assets/imgs/botaoEditar.png">
+        </button>
+        <button id="excluirBtn" class="btns" (click)="excluirSaida(saida.id)">
+          <img src="assets/imgs/botaoExcluir.png">
+        </button>
       </div>
-
-    </div>
-
-    <div class="linLista">
-      <div class="txtDiv">
-        <p class="txtLista">Bar</p>
-        <p class="txtLista">Lazer</p>
-        <p class="txtLista">03-2025</p>
-        <p class="txtLista">R$XXX.XX</p>
-      </div>
-
-      <div class="acoesDiv">
-        <button id="editarBtn" class="btns"> <img src="assets/imgs/botaoEditar.png"> </button>
-        <button id="excluirBtn" class="btns"> <img src="assets/imgs/botaoExcluir.png"> </button>
-      </div>
-
     </div>
 
   </div>
