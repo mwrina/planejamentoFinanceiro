@@ -2,6 +2,7 @@ import express from 'express';
 import usuarioRoutes from './routes/usuario_routes.js';
 import entradasRoutes from './routes/entradas_routes.js';
 import saidasRoutes from './routes/saidas_routes.js';
+import InvestimentosRoutes from './routes/investimentos_routes.js'
 
 import cors from 'cors';
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/entradas', entradasRoutes);
 app.use('/api/saidas', saidasRoutes)
+app.use('/api/investimentos', InvestimentosRoutes)
 
 const PORT = 3000;
 app.listen(PORT, () => {

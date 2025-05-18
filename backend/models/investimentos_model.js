@@ -1,40 +1,28 @@
-import { Sequelize } from "sequelize";
-import db from "../config/database.js";
-import Usuario from "./usuario_model.js";
+import db from '../config/db.js';
 
-const Investimento = db.define('investimentos', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-    },
-    usuario: {
-      type:Sequelize.INTEGER,
-      references: {
-        model: Usuario,
-        key: 'id'
-      }
-    },
-    investimento: {
-        type:Sequelize.STRING(50)
-    },
-    tipo: {
-      type:Sequelize.STRING(30)
-    },
-    data: {
-      type:Sequelize.DATE
-    },
-    valor: {
-      type:Sequelize.FLOAT
-    },
-    risco: {
-      type:Sequelize.STRING(10)
-    }
-},
-{
-    timestamps: false,
-    freezeTableName: true
-})
+const Investimento = {
+  criar: (usuario, investimento, tipo, data, valor, risco, callback) => {
+    const sql = 'INSERT INTO investimentos (usuario, investimento, tipo, data, valor, risco) VALUES (?, ?, ?, ?, ?, ?)';
+    db.query(sql, [usuario, investimento, tipo, data, valor, risco], callback);
+  },
 
-Investimento.belongsTo(Usuario, {foreignKey:'usuarios', as: 'usuarioAssociation', allowNull:false})
+  listarInvestimentos : (usuario, callback) => {
+    const sql = 'SELECT * FROM investimentos WHERE usuario = ?';
+    db.query(sql, [usuario], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+    });
+  },
+  
+  atualizar : (id, investimento, tipo, data, valor, risco, callback) => {
+    const sql = 'UPDATE investimentos SET investimento = ?, tipo = ?, data = ?, valor = ?, risco = ? WHERE id = ?';
+    db.query(sql, [investimento, tipo, data, valor, risco, id], callback);
+  },
 
-export default Investimento
+  deletar : (id, callback) => {
+    const sql = 'DELETE FROM investimentos WHERE id = ?';
+    db.query(sql, [id], callback);
+  },
+};
+
+export default Investimento;

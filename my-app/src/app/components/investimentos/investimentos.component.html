@@ -3,13 +3,21 @@
 <main>
 
   <div class="titBtns">
-      <p>Minhas entradas</p>
+      <p>Meus investimentos</p>
 
       <div class="btnsDiv">
-        <button id="excelBtn" class="btns"> <img src="assets/imgs/botaoExcel.png" id="btn"> </button>
+        <button id="excelBtn" class="btns" (click)="exportarExcel()">
+          <img src="assets/imgs/botaoExcel.png" id="btn">
+        </button>
         <button id="filtroBtn" class="btns"> <img src="assets/imgs/botaoFiltro.png" id="btn"> </button>
         <button id="addBtn" class="btns" (click)="showPopup()"> <img src="assets/imgs/botaoAdd.png" id="btn"> </button>
-        <app-popup-criar-investimento *ngIf="isPopupVisible" (close)="hidePopup()"></app-popup-criar-investimento>
+        <app-popup-criar-investimento
+          *ngIf="isPopupVisible"
+          (close)="hidePopup()"
+          [investimentoParaEditar]="investimentoParaEditar"
+          (investimentoCriado)="onInvestimentoCriado()"
+        ></app-popup-criar-investimento>
+
       </div>
   </div>
 
@@ -18,7 +26,7 @@
     <div class="linTit">
       <div class="txtDiv">
         <p class="txtLista">Investimento</p>
-        <p class="txtLista">Tipo de Inv.</p>
+        <p class="txtLista">Tipo de Investimento</p>
         <p class="txtLista">Data</p>
         <p class="txtLista">Valor</p>
         <p class="txtLista">Risco</p>
@@ -29,36 +37,23 @@
       </div>
     </div>
 
-    <div class="linLista">
+    <div class="linLista" *ngFor="let investimento of investimentos">
       <div class="txtDiv">
-        <p class="txtLista">ABEV3</p>
-        <p class="txtLista">Ações</p>
-        <p class="txtLista">03-2025</p>
-        <p class="txtLista">R$XXXX.XX</p>
-        <p class="txtLista">Médio</p>
+        <p class="txtLista">{{ investimento.investimento }}</p>
+        <p class="txtLista">{{ investimento.tipo }}</p>
+        <p class="txtLista">{{ investimento.data | date: 'MM-yyyy' }}</p>
+        <p class="txtLista">R$ {{ investimento.valor | number:'1.2-2' }}</p>
+        <p class="txtLista">{{ investimento.risco }}</p>
       </div>
 
       <div class="acoesDiv">
-        <button id="editarBtn" class="btns"> <img src="assets/imgs/botaoEditar.png"> </button>
-        <button id="excluirBtn" class="btns"> <img src="assets/imgs/botaoExcluir.png"> </button>
+        <button id="editarBtn" class="btns" (click)="editarInvestimento(investimento)">
+          <img src="assets/imgs/botaoEditar.png">
+        </button>
+        <button id="excluirBtn" class="btns" (click)="excluirInvestimento(investimento.id)">
+          <img src="assets/imgs/botaoExcluir.png">
+        </button>
       </div>
-
-    </div>
-
-    <div class="linLista">
-      <div class="txtDiv">
-        <p class="txtLista">CDB</p>
-        <p class="txtLista">CDB</p>
-        <p class="txtLista">03-2025</p>
-        <p class="txtLista">R$XXX.XX</p>
-        <p class="txtLista">Médio</p>
-      </div>
-
-      <div class="acoesDiv">
-        <button id="editarBtn" class="btns"> <img src="assets/imgs/botaoEditar.png"> </button>
-        <button id="excluirBtn" class="btns"> <img src="assets/imgs/botaoExcluir.png"> </button>
-      </div>
-
     </div>
 
   </div>

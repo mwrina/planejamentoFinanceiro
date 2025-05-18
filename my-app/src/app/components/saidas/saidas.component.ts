@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { PopupCriarSaidaComponent } from '../popup-criar-saida/popup-criar-saida.component';
 import { SaidaService } from '../../services/saidas.service';
+import * as ExcelJS from 'exceljs';
+import { saveAs } from 'file-saver';
 
 
 @Component({
@@ -78,4 +80,33 @@ export class SaidasComponent {
       }
     });
   }
+
+    exportarExcel(): void {
+      const workbook = new ExcelJS.Workbook();
+      const worksheet = workbook.addWorksheet('Saidas');
+
+      // Cabeçalhos
+      worksheet.columns = [
+        { header: 'Saída', key: 'saida', width: 25 },
+        { header: 'Tipo de Saída', key: 'tipo', width: 25 },
+        { header: 'Data', key: 'data', width: 15 },
+        { header: 'Valor (R$)', key: 'valor', width: 15 }
+      ];
+
+      // Adiciona os dados
+      this.saidas.forEach(inv => {
+        worksheet.addRow({
+          saida: inv.saida,
+          tipo: inv.tipo,
+          data: new Date(inv.data).toLocaleDateString('pt-BR', { month: '2-digit', year: 'numeric' }),
+          valor: inv.valor.toFixed(2).replace('.', ',')
+        });
+      });
+
+      // Gera o buffer e baixa o arquivo
+      workbook.xlsx.writeBuffer().then(buffer => {
+        const blob = new Blob([buffer], { type: 'application/octet-stream' });
+        saveAs(blob, 'minhas-saidas.xlsx');
+      });
+    }
 }

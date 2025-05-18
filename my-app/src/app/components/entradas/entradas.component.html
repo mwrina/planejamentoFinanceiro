@@ -6,7 +6,9 @@
       <p>Minhas entradas</p>
 
       <div class="btnsDiv">
-        <button id="excelBtn" class="btns"> <img src="assets/imgs/botaoExcel.png" id="btn"> </button>
+        <button id="excelBtn" class="btns" (click)="exportarExcel()">
+          <img src="assets/imgs/botaoExcel.png" id="btn">
+        </button>
         <button id="filtroBtn" class="btns"> <img src="assets/imgs/botaoFiltro.png" id="btn"> </button>
         <button id="addBtn" class="btns" (click)="showPopup()"> <img src="assets/imgs/botaoAdd.png" id="btn"> </button>
         <app-popup-criar-entrada

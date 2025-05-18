@@ -13,7 +13,7 @@
 .popup-content {
   font-family: 'Roboto';
   width: 30%;
-  height: 65%;
+  height: 75%;
   padding: 10px;
   border-radius: 20px;
   background-color: #B3D6B3;
@@ -75,6 +75,7 @@
 }
 
 .submitBtn {
+  color: #000000;
   border: 3px solid #486F48;
   background-color: rgba(36, 120, 36, 0.24);
   border-radius: 20px;

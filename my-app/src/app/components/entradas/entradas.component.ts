@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { PopupCriarEntradaComponent } from '../popup-criar-entrada/popup-criar-entrada.component';
 import { EntradaService } from '../../services/entradas.service';
+import * as ExcelJS from 'exceljs';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-entradas',
@@ -72,6 +74,35 @@ export class EntradasComponent implements OnInit {
       error: () => {
         alert('Erro ao excluir entrada.');
       }
+    });
+  }
+
+  exportarExcel(): void {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Entradas');
+
+    // Cabeçalhos
+    worksheet.columns = [
+      { header: 'Entrada', key: 'entrada', width: 25 },
+      { header: 'Tipo de Entrada', key: 'tipo', width: 25 },
+      { header: 'Data', key: 'data', width: 15 },
+      { header: 'Valor (R$)', key: 'valor', width: 15 }
+    ];
+
+    // Adiciona os dados
+    this.entradas.forEach(inv => {
+      worksheet.addRow({
+        entrada: inv.entrada,
+        tipo: inv.tipo,
+        data: new Date(inv.data).toLocaleDateString('pt-BR', { month: '2-digit', year: 'numeric' }),
+        valor: inv.valor.toFixed(2).replace('.', ',')
+      });
+    });
+
+    // Gera o buffer e baixa o arquivo
+    workbook.xlsx.writeBuffer().then(buffer => {
+      const blob = new Blob([buffer], { type: 'application/octet-stream' });
+      saveAs(blob, 'minhas-entradas.xlsx');
     });
   }
 }

@@ -1,40 +1,46 @@
 <div class="popup-overlay">
-
   <div class="popup-content">
 
     <div class="divFechar">
       <button id="botaoFechar" (click)="closePopup()"><img src="assets/imgs/fecharIcon.svg"></button>
     </div>
 
-    <form class="campos">
+    <form class="campos" [formGroup]="form" (ngSubmit)="salvarInvestimento()">
       <div class="lin">
-        <p id="tit">Entrada</p>
-        <input type="text" id="nome" class="formInput">
+        <p id="tit">Investimento</p>
+        <input type="text" id="nome" class="formInput" formControlName="investimento">
       </div>
 
       <div class="lin">
-        <p id="tit">Tipo de Entrada</p>
-        <select id="tipo" class="formSelect">
-          <option>Recorrente</option>
-          <option>Pontual</option>
-        </select>
+        <p id="tit">Tipo de Investimento</p>
+        <input type="text" id="nome" class="formInput" formControlName="tipo">
       </div>
 
       <div class="lin">
         <p id="tit">Data</p>
-        <input type="date" id="data" class="formInput">
+        <input type="date" id="data" class="formInput" formControlName="data">
       </div>
 
       <div class="lin">
         <p id="tit">Valor</p>
-        <input type="number" id="valor" class="formInput">
+        <input type="number" id="valor" class="formInput" formControlName="valor">
+      </div>
+
+      <div class="lin">
+        <p id="tit">Risco</p>
+        <select id="risco" class="formSelect" formControlName="risco">
+          <option>Alto</option>
+          <option>Médio</option>
+          <option>Baixo</option>
+        </select>
       </div>
 
       <div class="submitDiv">
-        <button type="submit" class="submitBtn">Adicionar</button>
+        <button type="submit" class="submitBtn" [disabled]="form.invalid">
+          {{ investimentoParaEditar ? 'Salvar Alterações' : 'Criar Investimento' }}
+        </button>
       </div>
     </form>
 
   </div>
-
 </div>
