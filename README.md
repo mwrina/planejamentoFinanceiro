@@ -21,6 +21,16 @@ Tipo de arquitetura escolhida: MVC (Model, View, Controller).
 - Versionamento de Código (Git/GitHub);
 - Realização de Testes Unitários.
 
+**Para executar o código:
+- npm install
+- npm install mysql2 express bcrypt jsonwebtoken sequelize cors
+- npm install -g @angular/cli
+- cd backend
+- node server.js
+- cd ..
+- cd my-app
+- ng serve
+
 Planejamento de Atividades:
 https://trello.com/b/WqL8dYkk/planejamento-financeiro
 
