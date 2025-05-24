@@ -4,7 +4,7 @@ Centro Universitário Católica de Santa Catarina
 
 Programação WEB
 
-Acadêmicos: Marina Rosa Oliveira e Matheus Johan Forbici
+Acadêmicos: Marina Rosa Oliveira
 
 O objetivo do projeto é desenvolver um sistema de planejamento financeiro para ajudar o usuário a controlar e acompanhar seus gastos.
 
