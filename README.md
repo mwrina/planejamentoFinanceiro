@@ -21,10 +21,16 @@ Tipo de arquitetura escolhida: MVC (Model, View, Controller).
 - Versionamento de Código (Git/GitHub);
 - Realização de Testes Unitários.
 
-**Para executar o código:
+**Setup do ambiente:
+- Abrir projeto no Visual Studio Code
 - npm install
-- npm install mysql2 express bcrypt jsonwebtoken sequelize cors chart.js ng2-charts 
-- npm install -g @angular/cli
+- cd backend
+- npm install
+- cd ..
+- cd my-app
+- npm install
+
+**Executando projeto:
 - cd backend
 - node server.js
 - cd ..
