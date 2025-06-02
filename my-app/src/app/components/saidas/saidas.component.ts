@@ -33,7 +33,7 @@ export class SaidasComponent {
       this.carregarSaidas();
     } else {
     alert('Usuário não identificado!');
-  }
+    }
   }
 
   // Mostra popup de criação de saída

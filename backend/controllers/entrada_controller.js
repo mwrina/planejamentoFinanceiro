@@ -28,12 +28,30 @@ export const listarEntradas = (req, res) => {
   });
 };
 
+export const calcTotal = (req, res) => {
+  const usuario = req.params.usuario;
+  Saida.calcTotal(usuario, (err, results) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total de entradas' });
+    res.status(200).json(results);
+  })
+}
+
+export const calcTotalMes = (req, res) => {
+  const usuario = req.params.usuario;
+  const mes = req.params.mes;
+  Entrada.calcTotalMes(usuario, mes, (err, results) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total' });
+    res.status(200).json(results);
+  });
+};
+
 export const atualizarEntrada = (req, res) => {
   const { id } = req.params;
   const { entrada, tipo, data, valor } = req.body;
 
   Entrada.atualizar(id, entrada, tipo, data, valor, (err, result) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao atualizar entrada.' });
+
     res.status(200).json({ mensagem: 'Entrada atualizada com sucesso!' });
   });
 };
@@ -43,6 +61,7 @@ export const deletarEntrada = (req, res) => {
 
   Entrada.deletar(id, (err) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao deletar entrada.' });
+
     res.status(200).json({ mensagem: 'Entrada deletada com sucesso!' });
   });
 };

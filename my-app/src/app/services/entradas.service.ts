@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 
 @Injectable({ providedIn: 'root' })
@@ -14,8 +13,17 @@ export class EntradaService {
   }
 
   listarEntradas(usuarioId: string) {
-  return this.http.get<any[]>(`http://localhost:3000/api/entradas/${usuarioId}`);
-}
+    return this.http.get<any[]>(`http://localhost:3000/api/entradas/${usuarioId}`);
+  }
+
+  calcTotal(usuarioId: string) {
+    return this.http.get<any[]>(`http://localhost:3000/api/entradas/total/${usuarioId}`);
+  }
+
+  calcTotalMes(usuarioId: string, mes: string) {
+    return this.http.get<any[]>(`http://localhost:3000/api/entradas/total/${usuarioId}/${mes}`);
+  }
+
 
   atualizarEntrada(id: number, dados: any) {
     return this.http.put(`${this.api}/${id}`, dados);

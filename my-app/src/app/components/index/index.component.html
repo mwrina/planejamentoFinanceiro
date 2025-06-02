@@ -14,14 +14,14 @@
               <div class="lin">
                   <div class="dash" id="entradas">
                       <img src="assets/imgs/entradaIcon.png" id="dashIcon">
-                      <p class="valores">R$ XXXX.XX</p>
+                      <p class="valores">R$ {{ totalEntradas | number:'1.2-2' }}</p>
                   </div>
 
                   <div class="dash" id="saidas">
                       <img src="assets/imgs/saidaIcon.png" id="dashIcon">
                       <div class="dashTxt">
-                          <p class="valores">R$ XXXX.XX</p>
-                          <p id="saldoDisponivel">Saldo disponível: R$ XXX,XX</p>
+                          <p class="valores">R$ {{ totalSaidas | number:'1.2-2' }}</p>
+                          <p id="saldoDisponivel">Saldo disponível: R$ {{ saldoDisponivel | number:'1.2-2' }}</p>
                       </div>
                   </div>
               </div>
@@ -29,12 +29,12 @@
               <div class="lin">
                   <div class="dash" id="investimentos">
                       <img src="assets/imgs/investimentoIcon.png" id="dashIcon">
-                      <p class="valores">R$ XXXX.XX</p>
+                      <p class="valores">R$ {{ totalInvestimentos | number:'1.2-2' }}</p>
                   </div>
 
                   <div class="dash" id="cofrinho">
                       <img src="assets/imgs/cofrinhoIcon.png" id="dashIcon">
-                      <p class="valores">R$ XXXX.XX</p>
+                      <p class="valores">R$ {{ totalCofrinho | number:'1.2-2' }}</p>
                   </div>
               </div>
           </div>
@@ -43,37 +43,15 @@
 
   <div class="divMain" id="baixo">
       <p id="tit">Acompanhamento de Gastos</p>
+
       <div class="acompanhamentosDiv">
-          <div class="acompanhamentoGastos">
-              <div class="acompanhamentoQuadrado">
-                  <p class="acompanhamentoValores">R$ XXX.XX</p>
-              </div>
-              <p class="acompanhamentoArea">Lazer</p>
-          </div>
-
-          <div class="acompanhamentoGastos">
-            <div class="acompanhamentoQuadrado">
-                <p class="acompanhamentoValores">R$ XXX.XX</p>
-            </div>
-            <p class="acompanhamentoArea">Lazer</p>
-        </div>
-
-        <div class="acompanhamentoGastos">
+        <div *ngFor="let acompanhamento of acompanhamentos" class="acompanhamentoGastos">
           <div class="acompanhamentoQuadrado">
-              <p class="acompanhamentoValores">R$ XXX.XX</p>
+            <p class="acompanhamentoValores">{{ acompanhamento.valor }}</p>
           </div>
-          <p class="acompanhamentoArea">Lazer</p>
+          <p class="acompanhamentoArea">{{ acompanhamento.area }}</p>
         </div>
-
-        <div class="acompanhamentoGastos">
-          <div class="acompanhamentoQuadrado">
-              <p class="acompanhamentoValores">R$ XXX.XX</p>
-          </div>
-          <p class="acompanhamentoArea">Lazer</p>
-        </div>
-
       </div>
-
-
   </div>
+
 </main>

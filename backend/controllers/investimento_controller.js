@@ -20,6 +20,23 @@ export const criarInvestimento = (req, res) => {
   });
 };
 
+export const calcTotal = (req, res) => {
+  const usuario = req.params.usuario;
+  Saida.calcTotal(usuario, (err, results) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total de investimentos' });
+    res.status(200).json(results);
+  })
+}
+
+export const calcTotalMes = (req, res) => {
+  const usuario = req.params.usuario;
+  const mes = req.params.mes;
+  Investimento.calcTotalMes(usuario, mes, (err, results) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total' });
+    res.status(200).json(results);
+  });
+};
+
 export const listarInvestimentos = (req, res) => {
   const usuario = req.params.usuario;
   Investimento.listarInvestimentos(usuario, (err, results) => {

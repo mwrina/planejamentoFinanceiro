@@ -28,12 +28,39 @@ export const listarSaidas = (req, res) => {
   });
 };
 
+export const listarTotaisPorTipo = (req, res) => {
+  const usuario = req.params.usuario;
+
+  Saida.listarTotaisPorTipo(usuario, (err, results) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao listar totais de saídas por tipo.' });
+    res.status(200).json(results);
+  });
+};
+
+export const calcTotal = (req, res) => {
+  const usuario = req.params.usuario;
+  Saida.calcTotal(usuario, (err, results) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total de saídas' });
+    res.status(200).json(results);
+  })
+}
+
+export const calcTotalMes = (req, res) => {
+  const usuario = req.params.usuario;
+  const mes = req.params.mes;
+  Saida.calcTotalMes(usuario, mes, (err, results) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total' });
+    res.status(200).json(results);
+  });
+};
+
 export const atualizarSaida = (req, res) => {
   const { id } = req.params;
   const { saida, tipo, data, valor } = req.body;
 
   Saida.atualizar(id, saida, tipo, data, valor, (err, result) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao atualizar saida.' });
+
     res.status(200).json({ mensagem: 'saida atualizada com sucesso!' });
   });
 };
@@ -43,6 +70,7 @@ export const deletarSaida = (req, res) => {
 
   Saida.deletar(id, (err) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao deletar saida.' });
+
     res.status(200).json({ mensagem: 'saida deletada com sucesso!' });
   });
 };

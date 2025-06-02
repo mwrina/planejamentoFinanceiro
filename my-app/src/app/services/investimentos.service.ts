@@ -14,8 +14,16 @@ export class InvestimentoService {
   }
 
   listarInvestimentos(usuarioId: string) {
-  return this.http.get<any[]>(`http://localhost:3000/api/investimentos/${usuarioId}`);
-}
+    return this.http.get<any[]>(`http://localhost:3000/api/investimentos/${usuarioId}`);
+  }
+
+  calcTotal(usuarioId: string) {
+    return this.http.get<any[]>(`http://localhost:3000/api/investimentos/total/${usuarioId}`);
+  }
+
+  calcTotalMes(usuarioId: string, mes: string) {
+    return this.http.get<any[]>(`http://localhost:3000/api/investimentos/total/${usuarioId}/${mes}`);
+  }
 
   atualizarInvestimento(id: number, dados: any) {
     return this.http.put(`${this.api}/${id}`, dados);

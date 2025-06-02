@@ -1,31 +1,49 @@
-import { Sequelize } from "sequelize";
-import db from "../config/database.js";
-import Usuario from "./usuario_model.js";
+import db from "../config/db.js";
 
-const Cofrinho = db.define('confrinho', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-    },
-    usuario: {
-      type:Sequelize.INTEGER,
-      references: {
-        model: Usuario,
-        key: 'id'
-      }
-    },
-    data: {
-      type:Sequelize.DATE
-    },
-    valor: {
-      type:Sequelize.FLOAT
-    }
-},
-{
-    timestamps: false,
-    freezeTableName: true
-})
+const Cofrinho = {
+  criar: (dados, callback) => {
+    const sql = 'INSERT INTO cofrinho (usuario, data, valor) VALUES (?, ?, ?)';
+    db.query(sql, [dados.usuario, dados.data, dados.valor], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+    });
+  },
 
-Cofrinho.belongsTo(Usuario, {foreignKey:'usuarios', as: 'usuarioAssociation', allowNull:false})
+  obterSaldoMes: (usuario, anoMes, callback) => {
+    const sql = `SELECT SUM(valor) AS total FROM cofrinho 
+                 WHERE usuario = ? AND DATE_FORMAT(data, '%Y-%m') = ?`;
+    db.query(sql, [usuario, anoMes], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+    });
+  },
 
-export default Cofrinho
+  atualizar: (id, dados, callback) => {
+    const sql = 'UPDATE cofrinho SET valor = ? WHERE id = ?';
+    db.query(sql, [dados.valor, id], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+    });
+  },
+
+  // Atualiza valor baseado no usuário e ano-mês
+  atualizarPorMes: (usuario, anoMes, valor, callback) => {
+    const sql = `UPDATE cofrinho SET valor = ? 
+                WHERE usuario = ? AND DATE_FORMAT(data, '%Y-%m') = ?`;
+    db.query(sql, [valor, usuario, anoMes], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+    });
+  },
+
+
+  excluir: (id, callback) => {
+    const sql = 'DELETE FROM cofrinho WHERE id = ?';
+    db.query(sql, [id], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+    });
+  }
+};
+
+export default Cofrinho;

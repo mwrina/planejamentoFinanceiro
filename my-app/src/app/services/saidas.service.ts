@@ -14,8 +14,20 @@ export class SaidaService {
   }
 
   listarSaidas(usuarioId: string) {
-  return this.http.get<any[]>(`http://localhost:3000/api/saidas/${usuarioId}`);
-}
+    return this.http.get<any[]>(`http://localhost:3000/api/saidas/${usuarioId}`);
+  }
+
+  listarTotaisPorTipo(usuarioId: string) {
+    return this.http.get<any[]>(`http://localhost:3000/api/saidas/totaisPorTipo/${usuarioId}`);
+  }
+
+  calcTotal(usuarioId: string) {
+    return this.http.get<any[]>(`http://localhost:3000/api/saidas/total/${usuarioId}`);
+  }
+
+  calcTotalMes(usuarioId: string, mes: string) {
+    return this.http.get<any[]>(`http://localhost:3000/api/saidas/total/${usuarioId}/${mes}`);
+  }
 
   atualizarSaida(id: number, dados: any) {
     return this.http.put(`${this.api}/${id}`, dados);
