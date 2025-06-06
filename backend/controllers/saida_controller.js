@@ -1,4 +1,5 @@
 import Saida from '../models/saidas_model.js';
+import { recalcularCofrinho } from '../config/utils/recalc_cofrinho.js';
 
 export const criarSaida = (req, res) => {
   const { usuario, saida, tipo, data, valor } = req.body;
@@ -12,6 +13,8 @@ export const criarSaida = (req, res) => {
       console.error('Erro ao criar saida:', err);
       return res.status(500).json({ mensagem: 'Erro ao criar saida.' });
     }
+
+      recalcularCofrinho(usuario, data);
 
     return res.status(201).json({ 
       mensagem: 'saida criada com sucesso!',
@@ -47,8 +50,8 @@ export const calcTotal = (req, res) => {
 
 export const calcTotalMes = (req, res) => {
   const usuario = req.params.usuario;
-  const mes = req.params.mes;
-  Saida.calcTotalMes(usuario, mes, (err, results) => {
+  const data = req.params.data;
+  Saida.calcTotalMes(usuario, data, (err, results) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total' });
     res.status(200).json(results);
   });
@@ -58,19 +61,35 @@ export const atualizarSaida = (req, res) => {
   const { id } = req.params;
   const { saida, tipo, data, valor } = req.body;
 
-  Saida.atualizar(id, saida, tipo, data, valor, (err, result) => {
-    if (err) return res.status(500).json({ mensagem: 'Erro ao atualizar saida.' });
+  Saida.buscarPorId(id, (err, saidaExistente) => {
+    if (err || !saidaExistente) {
+      return res.status(404).json({ mensagem: 'Saida não encontrada.' });
+    }
 
-    res.status(200).json({ mensagem: 'saida atualizada com sucesso!' });
+    Saida.atualizar(id, saida, tipo, data, valor, (err, result) => {
+      if (err) return res.status(500).json({ mensagem: 'Erro ao atualizar saida.' });
+
+      recalcularCofrinho(saidaExistente.usuario, data);
+
+      res.status(200).json({ mensagem: 'Saida atualizada com sucesso!' });
+    });
   });
 };
 
 export const deletarSaida = (req, res) => {
   const { id } = req.params;
 
-  Saida.deletar(id, (err) => {
-    if (err) return res.status(500).json({ mensagem: 'Erro ao deletar saida.' });
+  Saida.buscarPorId(id, (err, saida) => {
+    if (err || !saida) {
+      return res.status(404).json({ mensagem: 'Saida não encontrada.' });
+    }
 
-    res.status(200).json({ mensagem: 'saida deletada com sucesso!' });
+    Saida.deletar(id, (err) => {
+      if (err) return res.status(500).json({ mensagem: 'Erro ao deletar saida.' });
+
+      recalcularCofrinho(saida.usuario, saida.data);
+
+      res.status(200).json({ mensagem: 'Saida deletada com sucesso!' });
+    });
   });
 };

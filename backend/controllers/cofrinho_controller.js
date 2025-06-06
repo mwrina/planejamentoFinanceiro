@@ -9,8 +9,8 @@ export const criarCofrinho = (req, res) => {
 };
 
 export const obterSaldoMes = (req, res) => {
-  const { usuario, anoMes } = req.params;
-  Cofrinho.obterSaldoMes(usuario, anoMes, (err, result) => {
+  const { usuario, data } = req.params;
+  Cofrinho.obterSaldoMes(usuario, data, (err, result) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao obter saldo do cofrinho' });
     res.status(200).json(result);
   });

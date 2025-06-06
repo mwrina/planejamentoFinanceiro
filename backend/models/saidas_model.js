@@ -14,6 +14,14 @@ const Saida = {
     });
   },
 
+  buscarPorId: (id, callback) => {
+    const sql = 'SELECT * FROM saidas WHERE id = ?';
+    db.query(sql, [id], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results[0]);
+    });
+  },
+
   listarTotaisPorTipo: (usuario, callback) => {
     const sql = 'SELECT tipo, SUM(valor) as total FROM saidas WHERE usuario = ? GROUP BY tipo';
     db.query(sql, [usuario], (err, results) => {
@@ -30,9 +38,9 @@ const Saida = {
     })
   },
 
-  calcTotalMes: (usuario, mes, callback) => {
+  calcTotalMes: (usuario, data, callback) => {
     const sql = `SELECT SUM(valor) as total FROM saidas WHERE usuario = ? AND DATE_FORMAT(data, '%Y-%m') = ?`;
-    db.query(sql, [usuario, mes], (err, results) => {
+    db.query(sql, [usuario, data], (err, results) => {
       if (err) return callback(err);
       callback(null, results);
     });

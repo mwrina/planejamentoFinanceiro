@@ -13,7 +13,7 @@ const router = express.Router();
 router.post('/', criarInvestimento);
 router.get('/:usuario', listarInvestimentos);
 router.get('/total/:usuario', calcTotal);
-router.get('/total/:usuario/:mes', calcTotalMes);
+router.get('/total/:usuario/:data', calcTotalMes);
 router.put('/:id', atualizarInvestimento);
 router.delete('/:id', deletarInvestimento);
 

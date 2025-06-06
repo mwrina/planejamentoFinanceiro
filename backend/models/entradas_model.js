@@ -14,6 +14,14 @@ const Entrada = {
     });
   },
 
+  buscarPorId: (id, callback) => {
+    const sql = 'SELECT * FROM entradas WHERE id = ?';
+    db.query(sql, [id], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results[0]);
+    });
+  },
+
   calcTotal: (usuario, callback) => {
     const sql = 'SELECT SUM(valor) as total FROM entradas WHERE usuario = ?';
     db.query(sql, [usuario], (err, results) => {
@@ -22,17 +30,18 @@ const Entrada = {
     })
   },
 
-  calcTotalMes: (usuario, mes, callback) => {
+  calcTotalMes: (usuario, data, callback) => {
     const sql = `
       SELECT SUM(valor) as total
       FROM entradas
       WHERE usuario = ?
         AND DATE_FORMAT(data, '%Y-%m') = ?`;
-    db.query(sql, [usuario, mes], (err, results) => {
+    db.query(sql, [usuario, data], (err, results) => {
       if (err) return callback(err);
       callback(null, results);
     });
   },
+
   
   atualizar : (id, entrada, tipo, data, valor, callback) => {
     const sql = 'UPDATE entradas SET entrada = ?, tipo = ?, data = ?, valor = ? WHERE id = ?';

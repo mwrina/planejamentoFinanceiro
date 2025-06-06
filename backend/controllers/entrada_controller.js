@@ -1,4 +1,5 @@
 import Entrada from '../models/entradas_model.js';
+import { recalcularCofrinho } from '../config/utils/recalc_cofrinho.js';
 
 export const criarEntrada = (req, res) => {
   const { usuario, entrada, tipo, data, valor } = req.body;
@@ -12,6 +13,8 @@ export const criarEntrada = (req, res) => {
       console.error('Erro ao criar entrada:', err);
       return res.status(500).json({ mensagem: 'Erro ao criar entrada.' });
     }
+
+    recalcularCofrinho(usuario, data);
 
     return res.status(201).json({ 
       mensagem: 'Entrada criada com sucesso!',
@@ -38,8 +41,8 @@ export const calcTotal = (req, res) => {
 
 export const calcTotalMes = (req, res) => {
   const usuario = req.params.usuario;
-  const mes = req.params.mes;
-  Entrada.calcTotalMes(usuario, mes, (err, results) => {
+  const data = req.params.data;
+  Entrada.calcTotalMes(usuario, data, (err, results) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total' });
     res.status(200).json(results);
   });
@@ -49,19 +52,36 @@ export const atualizarEntrada = (req, res) => {
   const { id } = req.params;
   const { entrada, tipo, data, valor } = req.body;
 
-  Entrada.atualizar(id, entrada, tipo, data, valor, (err, result) => {
-    if (err) return res.status(500).json({ mensagem: 'Erro ao atualizar entrada.' });
+  Entrada.buscarPorId(id, (err, entradaExistente) => {
+    if (err || !entradaExistente) {
+      return res.status(404).json({ mensagem: 'Entrada não encontrada.' });
+    }
 
-    res.status(200).json({ mensagem: 'Entrada atualizada com sucesso!' });
+    Entrada.atualizar(id, entrada, tipo, data, valor, (err, result) => {
+      if (err) return res.status(500).json({ mensagem: 'Erro ao atualizar entrada.' });
+
+      recalcularCofrinho(entradaExistente.usuario, data);
+
+      res.status(200).json({ mensagem: 'Entrada atualizada com sucesso!' });
+    });
   });
 };
 
 export const deletarEntrada = (req, res) => {
   const { id } = req.params;
 
-  Entrada.deletar(id, (err) => {
-    if (err) return res.status(500).json({ mensagem: 'Erro ao deletar entrada.' });
+  Entrada.buscarPorId(id, (err, entrada) => {
+    if (err || !entrada) {
+      return res.status(404).json({ mensagem: 'Entrada não encontrada.' });
+    }
 
-    res.status(200).json({ mensagem: 'Entrada deletada com sucesso!' });
+    Entrada.deletar(id, (err) => {
+      if (err) return res.status(500).json({ mensagem: 'Erro ao deletar entrada.' });
+
+      recalcularCofrinho(entrada.usuario, entrada.data);
+
+      res.status(200).json({ mensagem: 'Entrada deletada com sucesso!' });
+    });
   });
 };
+

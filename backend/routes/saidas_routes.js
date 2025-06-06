@@ -15,7 +15,7 @@ router.post('/', criarSaida);
 router.get('/:usuario', listarSaidas);
 router.get('/totaisPorTipo/:usuario', listarTotaisPorTipo);
 router.get('/total/:usuario', calcTotal);
-router.get('/total/:usuario/:mes', calcTotalMes);
+router.get('/total/:usuario/:data', calcTotalMes);
 router.put('/:id', atualizarSaida);
 router.delete('/:id', deletarSaida);
 

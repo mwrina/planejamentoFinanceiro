@@ -4,7 +4,7 @@ import { criarCofrinho, obterSaldoMes, atualizarCofrinho, excluirCofrinho } from
 const router = express.Router();
 
 router.post('/', criarCofrinho);
-router.get('/:usuario/:anoMes', obterSaldoMes);
+router.get('/:usuario/:data', obterSaldoMes);
 router.put('/:id', atualizarCofrinho);
 router.delete('/:id', excluirCofrinho);
 
