@@ -6,7 +6,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { IndexComponent } from './components/index/index.component';
 import { EntradasComponent } from './components/entradas/entradas.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   imports: [
     BrowserModule,
     RouterModule,
-    HttpClientModule,
-    CarouselModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

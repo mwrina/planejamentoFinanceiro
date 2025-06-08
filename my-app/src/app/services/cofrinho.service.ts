@@ -13,8 +13,12 @@ export class CofrinhoService {
     return this.http.post(`${this.apiUrl}`, dados);
   }
 
-  obterSaldoMes(usuarioId: number, mes: string) {
-    return this.http.get<any[]>(`http://localhost:3000/api/cofrinho/${usuarioId}/${mes}`);
+  obterSaldoMes(usuarioId: string, mes: string) {
+    return this.http.get<any[]>(`${this.apiUrl}/${usuarioId}/${mes}`);
+  }
+
+  obterHistoricoAnual(usuarioId: string) {
+    return this.http.get<any[]>(`${this.apiUrl}/historico/${usuarioId}`);
   }
 
   atualizarCofrinho(id: number, dados: any) {

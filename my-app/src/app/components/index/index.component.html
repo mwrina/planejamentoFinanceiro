@@ -5,7 +5,11 @@
   <div class="divMain">
       <div class="esq">
           <p id="tit">Cofrinho - Comparação de Acúmulos Mensal</p>
-          <img src="assets/imgs/graficoBarras.png" id="graficoBarras">
+          <canvas baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          chartType="bar">
+          </canvas>
       </div>
 
       <div class="dir">
