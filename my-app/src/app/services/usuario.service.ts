@@ -10,9 +10,17 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
 
+  buscarUsuario(usuario: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${usuario}`);
+  }
+
   // Método para criar um usuário
   criarUsuario(usuario: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/criar`, usuario);
+  }
+
+  atualizarUsuario(usuarioId: string, dados: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/editar/${usuarioId}`, dados);
   }
 
   // Método para login do usuário

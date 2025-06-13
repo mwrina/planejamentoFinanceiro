@@ -11,26 +11,26 @@ const Cofrinho = {
     db.query(sql, [usuario, data, valor, valor], callback);
   },
 
-  criar: (dados, callback) => {
-    const sql = 'INSERT INTO cofrinho (usuario, data, valor) VALUES (?, ?, ?)';
-    db.query(sql, [dados.usuario, dados.data, dados.valor], (err, results) => {
-      if (err) return callback(err);
-      callback(null, results);
-    });
-  },
-
   obterSaldoMes: (usuario, data, callback) => {
-    const sql = `SELECT SUM(valor) AS total FROM cofrinho 
-                 WHERE usuario = ? AND DATE_FORMAT(data, '%Y-%m') = ?`;
+    const sql = `SELECT valor FROM cofrinho 
+                WHERE usuario = ? AND DATE_FORMAT(data, '%Y-%m') = ? LIMIT 1`;
     db.query(sql, [usuario, data], (err, results) => {
       if (err) return callback(err);
-      callback(null, results);
+      // results[0] será o objeto { valor: ... } ou undefined
+      callback(null, results[0] || { valor: 0 });
     });
   },
 
-  atualizar: (id, dados, callback) => {
-    const sql = 'UPDATE cofrinho SET valor = ? WHERE id = ?';
-    db.query(sql, [dados.valor, id], (err, results) => {
+  obterHistoricoAnual: (usuario, callback) => {
+    const sql = `
+      SELECT DATE_FORMAT(data, '%Y-%m') AS mes, COALESCE(SUM(valor), 0) AS total
+      FROM cofrinho
+      WHERE usuario = ?
+        AND data >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
+      GROUP BY mes
+      ORDER BY mes
+    `;
+    db.query(sql, [usuario], (err, results) => {
       if (err) return callback(err);
       callback(null, results);
     });

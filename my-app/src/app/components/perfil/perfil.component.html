@@ -1,0 +1,27 @@
+<main>
+  <div class="esq">
+    <img src="assets/imgs/userLogin.svg" id="userIcon">
+
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+
+      <label for="nome" class="formLabel">Nome</label>
+      <input id="nome" name="nome" class="formInput" type="text" required placeholder="Nome" formControlName="nome">
+
+      <label for="email" class="formLabel">E-mail</label>
+      <input id="email" name="email" class="formInput" type="email" required placeholder="E-mail" formControlName="email">
+
+      <label for="senha" class="formLabel">Senha</label>
+      <input id="senha" name="senha" class="formInput" type="password" required placeholder="Senha" formControlName="senha">
+
+      <label for="confSenha" class="formLabel">Confirmar senha</label>
+      <input id="confSenha" name="confSenha" class="formInput" type="password" required placeholder="Confirmar senha" formControlName="confSenha">
+
+      <button class="submitBtn" type="submit">Alterar Dados</button>
+      <button class="excludeBtn" type="button" (click)="excluirConta()">Excluir conta</button>
+    </form>
+  </div>
+
+  <div class="dir">
+    <img src="assets/imgs/logo.svg" alt="Logo Monet" class="logo" />
+  </div>
+</main>

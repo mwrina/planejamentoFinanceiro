@@ -6,6 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { IndexComponent } from './components/index/index.component';
 import { EntradasComponent } from './components/entradas/entradas.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     IndexComponent,
     EntradasComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

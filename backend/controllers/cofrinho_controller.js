@@ -12,9 +12,26 @@ export const obterSaldoMes = (req, res) => {
   const { usuario, data } = req.params;
   Cofrinho.obterSaldoMes(usuario, data, (err, result) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao obter saldo do cofrinho' });
+    
+    // Retorna um array com objeto para compatibilidade com Angular
+    res.status(200).json([{ total: result.valor ?? 0 }]);
+  });
+};
+
+export const obterHistoricoAnual = (req, res) => {
+  const { usuario } = req.params;
+  Cofrinho.obterHistoricoAnual(usuario, (err, result) => {
+    if (err) return res.status(500).json({ mensagem: 'Erro ao obter histórico' });
+
+    // Garante que seja array, mesmo que vazio
+    if (!Array.isArray(result)) {
+      result = [];
+    }
+
     res.status(200).json(result);
   });
 };
+
 
 export const atualizarCofrinho = (req, res) => {
   const id = req.params.id;

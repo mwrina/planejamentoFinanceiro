@@ -33,7 +33,7 @@ export const listarEntradas = (req, res) => {
 
 export const calcTotal = (req, res) => {
   const usuario = req.params.usuario;
-  Saida.calcTotal(usuario, (err, results) => {
+  Entrada.calcTotal(usuario, (err, results) => {
     if (err) return res.status(500).json({ mensagem: 'Erro ao calcular total de entradas' });
     res.status(200).json(results);
   })

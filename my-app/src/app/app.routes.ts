@@ -46,5 +46,10 @@ export const routes: Routes = [
     path: 'esqueci-minha-senha',
     loadComponent: () =>
       import('./components/esqueci-minha-senha/esqueci-minha-senha.component').then(m => m.EsqueciMinhaSenhaComponent)
+  },
+  {
+    path: 'perfil',
+    loadComponent: () =>
+      import('./components/perfil/perfil.component').then(m => m.PerfilComponent)
   }
 ];

@@ -4,6 +4,21 @@ import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = 'secretpassword';
 
+export const buscarUsuario = (req, res) => {
+    const { id } = req.params;
+
+    Usuario.buscarPorId(id, (err, usuario) => {
+      if (err) {
+        if (err.status === 404) {
+          return res.status(404).json({ mensagem: err.mensagem });
+        }
+        console.error(err);
+        return res.status(500).json({ mensagem: 'Erro ao buscar usuário.' });
+      }
+
+      res.json(usuario);
+    });
+  }
 
 export const criarUsuario = (req, res) => {
   const { nome, email, senha } = req.body;
@@ -23,6 +38,26 @@ export const criarUsuario = (req, res) => {
       return res.status(500).json({ mensagem: 'Erro ao criar usuário.' });
     }
     res.status(201).json({ mensagem: 'Usuário criado com sucesso!' });
+  });
+};
+
+export const atualizarUsuario = (req, res) => {
+  const { id } = req.params;
+  const { nome, email, senha } = req.body;
+
+  if (!nome || !email || !senha) {
+    return res.status(400).json({ mensagem: 'Todos os campos são obrigatórios.' });
+  }
+
+  const senhaHash = bcrypt.hashSync(senha, 10);
+
+  const sql = 'UPDATE usuarios SET nome = ?, email = ?, senha = ? WHERE id = ?';
+  Usuario.atualizar(nome, email, senhaHash, id, (err, result) => {
+    if (err) {
+      console.error('Erro ao atualizar usuário:', err);
+      return res.status(500).json({ mensagem: 'Erro no servidor.' });
+    }
+    res.json({ mensagem: 'Usuário atualizado com sucesso!' });
   });
 };
 

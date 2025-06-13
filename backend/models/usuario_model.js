@@ -13,6 +13,22 @@ const Usuario = {
       if (results.length === 0) return callback(null, null);
       callback(null, results[0]);
     });
+  },
+
+  buscarPorId: (id, callback) => {
+    const sql = 'SELECT id, nome, email FROM usuarios WHERE id = ?';
+    db.query(sql, [id], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results[0]);
+    });
+  },
+
+  atualizar: (nome, email, senha, id, callback) => {
+    const sql = 'UPDATE usuarios SET nome = ?, email = ?, senha = ? WHERE id = ?';
+    db.query(sql, [nome, email, senha, id], (err, results) => {
+      if (err) return callback(err);
+      callback(null, results);
+    });
   }
 };
 

@@ -1,7 +1,3 @@
-import Entrada from '../../models/entradas_model.js';
-import Saida from '../../models/saidas_model.js';
-import Cofrinho from '../../models/cofrinho_model.js';
-
 export async function recalcularCofrinho(usuario, data) {
   const dataObj = new Date(data);
   const anoMes = dataObj.toISOString().slice(0, 7); // "2025-06"
@@ -29,11 +25,24 @@ export async function recalcularCofrinho(usuario, data) {
       });
     });
 
-    const economia = entradas - saidas - investimentos;
+    console.log('Entradas:', entradas, typeof entradas);
+    console.log('Saídas:', saidas, typeof saidas);
+    console.log('Investimentos:', investimentos, typeof investimentos);
 
-    Cofrinho.atualizarOuInserir(usuario, dataMes, economia, (err) => {
-      if (err) console.error('Erro ao atualizar cofrinho:', err);
-      else console.log(`Cofrinho atualizado: R$ ${economia.toFixed(2)}`);
+    const entradasNum = Number(entradas) || 0;
+    const saidasNum = Number(saidas) || 0;
+    const investimentosNum = Number(investimentos) || 0;
+
+    const economia = entradasNum - saidasNum - investimentosNum;
+
+    await new Promise((resolve, reject) => {
+      Cofrinho.atualizarOuInserir(usuario, dataMes, economia, (err) => {
+        if (err) reject(err);
+        else {
+          console.log(`Cofrinho atualizado: R$ ${economia.toFixed(2)}`);
+          resolve();
+        }
+      });
     });
 
   } catch (error) {

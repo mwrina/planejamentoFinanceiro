@@ -31,7 +31,11 @@ const Saida = {
   },
 
   calcTotal: (usuario, callback) => {
-    const sql = 'SELECT SUM(valor) as total FROM saidas WHERE usuario = ?';
+    const sql = `
+    SELECT COALESCE(SUM(valor), 0) AS total
+      FROM saidas
+      WHERE usuario = ?
+      AND DATE_FORMAT(data, '%Y-%m') = ?`;
     db.query(sql, [usuario], (err, results) => {
       if(err) return callback(err);
       callback(null, results);

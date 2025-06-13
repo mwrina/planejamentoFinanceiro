@@ -14,6 +14,7 @@
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
+    "chart.js": "^4.4.9",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "exceljs": "^4.4.0",
@@ -21,6 +22,7 @@
     "file-saver": "^2.0.5",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.14.1",
+    "ng2-charts": "^8.0.0",
     "planejamentofinanceiro-main": "file:",
     "sequelize": "^6.37.7"
   },
