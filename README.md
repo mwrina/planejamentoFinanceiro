@@ -23,8 +23,12 @@ Tipo de arquitetura escolhida: MVC (Model, View, Controller).
 
 **Para executar o código:
 - npm install
-- npm install mysql2 express bcrypt jsonwebtoken sequelize cors chart.js ng2-charts 
-- npm install -g @angular/cli
+- cd backend
+- npm install
+- cd ..
+- cd my-app
+- npm install
+- cd ..
 - cd backend
 - node server.js
 - cd ..
