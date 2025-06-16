@@ -14,7 +14,6 @@ export class UsuarioService {
     return this.http.get(`${this.apiUrl}/${usuario}`);
   }
 
-  // Método para criar um usuário
   criarUsuario(usuario: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/criar`, usuario);
   }
@@ -23,8 +22,11 @@ export class UsuarioService {
     return this.http.put(`${this.apiUrl}/editar/${usuarioId}`, dados);
   }
 
-  // Método para login do usuário
   login(usuario: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, usuario);
+  }
+
+  deletarUsuario(id: string) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

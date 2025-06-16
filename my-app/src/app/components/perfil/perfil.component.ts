@@ -69,7 +69,21 @@ export class PerfilComponent {
   }
 
   excluirConta(): void {
-    // Lógica para excluir o usuário
-    alert("Funcionalidade de exclusão em desenvolvimento.");
-  }
+    if (!confirm('Tem certeza que deseja excluir sua conta? Essa ação não pode ser desfeita.')) {
+      return;
+    }
+
+    this.usuarioService.deletarUsuario(this.usuarioId).subscribe({
+      next: () => {
+        alert('Conta excluída com sucesso!');
+        localStorage.clear(); // limpa token/id do localStorage
+        // redireciona para tela de login ou home
+        window.location.href = '/login';
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Erro ao excluir conta.');
+      }
+    });
+}
 }
